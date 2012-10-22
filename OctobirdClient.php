@@ -45,6 +45,9 @@ class OctobirdClient
     private $responseRaw;
     private $response;
 
+    /**
+     * Constructor.
+     */
     public function __construct()
     {
         $this
@@ -73,6 +76,7 @@ class OctobirdClient
 
     /**
      * @param integer $siteId
+     *
      * @return OctobirdClient
      */
     public function setSiteId($siteId)
@@ -82,6 +86,7 @@ class OctobirdClient
 
     /**
      * @param string $bannerType all|img|txt
+     *
      * @return OctobirdClient
      */
     public function setBannerType($bannerType)
@@ -91,6 +96,7 @@ class OctobirdClient
 
     /**
      * @param integer $bannerNumber 1-5
+     *
      * @return OctobirdClient
      */
     public function setBannerNumber($bannerNumber)
@@ -100,6 +106,7 @@ class OctobirdClient
 
     /**
      * @param integer $bannerSeverallyHtml 0|1, default 0
+     *
      * @return OctobirdClient
      */
     public function setBannerSeverallyHtml($bannerSeverallyHtml)
@@ -107,8 +114,9 @@ class OctobirdClient
         return $this->setParam('adhtml', $bannerSeverallyHtml);
     }
 
-     /**
+    /**
      * @param string $viewerGender f|m
+     *
      * @return OctobirdClient
      */
     public function setViewerGender($viewerGender)
@@ -118,6 +126,7 @@ class OctobirdClient
 
     /**
      * @param ineteger $viewerAge 0-100
+     *
      * @return OctobirdClient
      */
     public function setViewerAge($viewerAge)
@@ -127,6 +136,7 @@ class OctobirdClient
 
     /**
      * @param integer $viewerDateOfBirth YYYYMMDD, ex. 19900623
+     *
      * @return OctobirdClient
      */
     public function setViewerDateOfBirth($viewerDateOfBirth)
@@ -136,6 +146,7 @@ class OctobirdClient
 
     /**
      * @param string $viewerCity
+     *
      * @return OctobirdClient
      */
     public function setViewerCity($viewerCity)
@@ -146,6 +157,7 @@ class OctobirdClient
     /**
      * @param float $viewerLatitude
      * @param float $viewerLongitude
+     *
      * @return OctobirdClient
      */
     public function setViewerGps($viewerLatitude, $viewerLongitude)
@@ -155,6 +167,7 @@ class OctobirdClient
 
     /**
      * @param string $viewerKeyWords ex. "sun,sea,girls"
+     *
      * @return OctobirdClient
      */
     public function setViewerKeyWords($viewerKeyWords)
@@ -164,6 +177,7 @@ class OctobirdClient
 
     /**
      * @param integer $test 0|1
+     *
      * @return OctobirdClient
      */
     public function setTest($test)
@@ -173,6 +187,7 @@ class OctobirdClient
 
     /**
      * @param string $responseFormat html|json|json-html|xml
+     *
      * @return OctobirdClient
      */
     public function setResponseFormat($responseFormat)
@@ -181,10 +196,12 @@ class OctobirdClient
     }
 
     /**
-     * @param string $name
+     * @param string  $name
      * @param integer $bannerNumber 1-5
-     * @param string $bannerType all|img|txt
+     * @param string  $bannerType all|img|txt
+     *
      * @return OctobirdClient
+     *
      * @throws InvalidArgumentException
      * @throws LogicException
      */
@@ -217,7 +234,8 @@ class OctobirdClient
 
     /**
      * @param string $name
-     * @param mixed $value
+     * @param mixed  $value
+     *
      * @return OctobirdClient
      */
     public function setParam($name, $value)
@@ -229,7 +247,9 @@ class OctobirdClient
 
     /**
      * @param string $name
+     *
      * @return mixed
+     *
      * @throws InvalidArgumentException
      */
     public function getParam($name)
@@ -243,6 +263,7 @@ class OctobirdClient
 
     /**
      * @param string $defaultResponse
+     *
      * @return OctobirdClient
      */
     public function setDefaultResponse($defaultResponse)
@@ -254,6 +275,7 @@ class OctobirdClient
 
     /**
      * @param string $serverUrl
+     *
      * @return OctobirdClient
      */
     public function setServerUrl($serverUrl)
@@ -265,6 +287,7 @@ class OctobirdClient
 
     /**
      * @param integer $connectTimeout microseconds
+     *
      * @return OctobirdClient
      */
     public function setConnectTimeout($connectTimeout)
@@ -276,6 +299,7 @@ class OctobirdClient
 
     /**
      * @param integer $timeout microseconds
+     *
      * @return OctobirdClient
      */
     public function setTimeout($timeout)
@@ -321,7 +345,10 @@ class OctobirdClient
 
     /**
      * @param string $name
+     * @param string $defaultBlock
+     *
      * @return string|null
+     *
      * @throws RuntimeException
      */
     public function getBlock($name = 'main', $defaultBlock = null)
@@ -340,11 +367,12 @@ class OctobirdClient
             $name,
             $this->response,
             $defaultBlock ? $defaultBlock : $this->getBlockFromResponse($name, $this->defaultResponse)
-       );
+        );
     }
 
     /**
      * @param string $name
+     *
      * @return boolean
      */
     public function hasBlock($name = 'main')
@@ -363,9 +391,10 @@ class OctobirdClient
     }
 
     /**
-     * @param string $name
-     * @param array $response
+     * @param string      $name
+     * @param array       $response
      * @param string|null $defaultBlock
+     *
      * @return string|null
      */
     private function getBlockFromResponse($name, $response, $defaultBlock = '')
@@ -379,7 +408,8 @@ class OctobirdClient
 
     /**
      * @param string $name
-     * @param array $response
+     * @param array  $response
+     *
      * @return boolean
      */
     private function hasBlockFromResponse($name, $response)
@@ -402,6 +432,7 @@ class OctobirdClient
 
     /**
      * @return array
+     *
      * @throws InvalidArgumentException
      */
     private function createQueryData()
@@ -457,6 +488,7 @@ class OctobirdClient
 
     /**
      * @param string $name
+     *
      * @return bool
      */
     private function isAvailableHeader($name)
@@ -475,8 +507,9 @@ class OctobirdClient
     private function getSystemParams()
     {
         $protocol = 'http';
-        if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')
+        if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
             $protocol .= 's';
+        }
 
         return array(
             'ip'   => $_SERVER['REMOTE_ADDR'],
@@ -486,6 +519,7 @@ class OctobirdClient
 
     /**
      * @param string $bannerType
+     *
      * @throws InvalidArgumentException
      */
     private function checkBannerType($bannerType)
@@ -497,6 +531,7 @@ class OctobirdClient
 
     /**
      * @param integer $bannerNumber
+     *
      * @throws InvalidArgumentException
      */
     private function checkBannerNumber($bannerNumber)
@@ -522,6 +557,7 @@ class OctobirdClient
 
     /**
      * @return OctobirdClient
+     *
      * @throws RuntimeException
      */
     private function setupCookieLabel()
@@ -544,6 +580,7 @@ class OctobirdClient
     /**
      * @param string $response
      * @param string $responseFormat
+     *
      * @return mixed
      */
     private function parseResponse($response, $responseFormat)
@@ -581,7 +618,8 @@ class OctobirdClient
 
     /**
      * @param string $url
-     * @param array $headers
+     * @param array  $headers
+     *
      * @return string
      */
     private function curlRequest($url, $headers)
@@ -603,7 +641,8 @@ class OctobirdClient
 
     /**
      * @param string $url
-     * @param array $headers
+     * @param array  $headers
+     *
      * @return string
      */
     private function fsockopenRequest($url, $headers)
