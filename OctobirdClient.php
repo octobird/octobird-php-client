@@ -424,7 +424,7 @@ class OctobirdClient
      */
     private function createUrl()
     {
-        $query = http_build_query($this->createQueryData());
+        $query = http_build_query($this->createQueryData(), null, '&');
         $url = $this->serverUrl . '?' . $query;
 
         return $url;
