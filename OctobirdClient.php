@@ -399,7 +399,7 @@ class OctobirdClient
      */
     private function getBlockFromResponse($name, $response, $defaultBlock = '')
     {
-        if ($this->hasBlockFromResponse($response)) {
+        if ($this->hasBlockFromResponse($name, $response)) {
             return $response['blocks'][$name]['html'];
         } else {
             return $defaultBlock;
